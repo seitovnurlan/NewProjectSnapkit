@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 import SnapKit
 import Kingfisher
 
@@ -23,7 +24,7 @@ class CustomCell: UITableViewCell {
     
     private lazy var descriptionLabel: UILabel = {
         let descr = UILabel()
-        descr.font = .boldSystemFont(ofSize: 11)
+        descr.font = .systemFont(ofSize: 11)
         descr.numberOfLines = 5
         descr.textAlignment = .justified
         return descr
@@ -43,13 +44,13 @@ class CustomCell: UITableViewCell {
         return view
     } ()
        
-//    private lazy var authorLabel: UILabel = {
-//        let author = UILabel()
-//        author.font = .boldSystemFont(ofSize: 11)
-//        author.numberOfLines = 5
-//        author.textAlignment = .justified
-//        return author
-//    } ()
+    private lazy var authorLabel: UILabel = {
+        let author = UILabel()
+        author.font = .systemFont(ofSize: 8)
+        author.numberOfLines = 1
+        author.textAlignment = .justified
+        return author
+    } ()
     
     override func layoutSubviews() {
         setupConstraints()
@@ -79,6 +80,13 @@ class CustomCell: UITableViewCell {
             make.right.equalTo(imageOfNews.snp.left).offset(-20)
         }
         
+        self.addSubview(authorLabel)
+        authorLabel.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(10)
+            make.left.equalToSuperview().offset(10)
+//            make.right.equalTo(imageOfNews.snp.left).offset(-20)
+        }
+        
         self.addSubview(dividerView)
         dividerView.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-2)
@@ -91,7 +99,12 @@ class CustomCell: UITableViewCell {
     func configure(with: Article) {
         self.titleLabel.text = with.title
         self.descriptionLabel.text = with.description
-        self.imageOfNews.kf.setImage(with: URL(string: with.urlToImage!))
+        if with.author != nil {self.authorLabel.text = with.author}
+        else {self.authorLabel.text = "not available"}
+//        if with.urlToImage != nil {
+            self.imageOfNews.kf.setImage(with: URL(string: with.urlToImage ?? "Emty"))
+//        }
+//        else { self.imageOfNews.kf.setImage(with: "not available")}
 //        handleImage(url: with.urlToImage!)
         
     }

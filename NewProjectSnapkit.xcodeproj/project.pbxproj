@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		284E681C29D5C806002A2E2B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 284E681B29D5C806002A2E2B /* SnapKit */; };
+		284E681F29D5C81A002A2E2B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 284E681E29D5C81A002A2E2B /* Kingfisher */; };
 		28768F8A29D31F5900731B75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28768F8929D31F5900731B75 /* AppDelegate.swift */; };
 		28768F8C29D31F5900731B75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28768F8B29D31F5900731B75 /* SceneDelegate.swift */; };
 		28768F8E29D31F5900731B75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28768F8D29D31F5900731B75 /* ViewController.swift */; };
 		28768F9129D31F5900731B75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28768F8F29D31F5900731B75 /* Main.storyboard */; };
 		28768F9329D31F5A00731B75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28768F9229D31F5A00731B75 /* Assets.xcassets */; };
 		28768F9629D31F5A00731B75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28768F9429D31F5A00731B75 /* LaunchScreen.storyboard */; };
-		28768F9E29D49EC100731B75 /* CustomViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28768F9D29D49EC100731B75 /* CustomViewCell.swift */; };
-		28768FA029D4AFD000731B75 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28768F9F29D4AFD000731B75 /* Model.swift */; };
+		28768F9E29D49EC100731B75 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28768F9D29D49EC100731B75 /* CustomCell.swift */; };
+		28768FA029D4AFD000731B75 /* NewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28768F9F29D4AFD000731B75 /* NewsData.swift */; };
 		28768FA229D4B07F00731B75 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28768FA129D4B07F00731B75 /* ApiManager.swift */; };
 		28768FA429D4BBC200731B75 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28768FA329D4BBC200731B75 /* SecondViewController.swift */; };
 		74DE127C5450D414CD3FDEF4 /* Pods_NewProjectSnapkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425029E8AACC6E08F48BE5C /* Pods_NewProjectSnapkit.framework */; };
@@ -30,8 +32,8 @@
 		28768F9229D31F5A00731B75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28768F9529D31F5A00731B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28768F9729D31F5A00731B75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		28768F9D29D49EC100731B75 /* CustomViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewCell.swift; sourceTree = "<group>"; };
-		28768F9F29D4AFD000731B75 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		28768F9D29D49EC100731B75 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		28768F9F29D4AFD000731B75 /* NewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsData.swift; sourceTree = "<group>"; };
 		28768FA129D4B07F00731B75 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		28768FA329D4BBC200731B75 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		2A18466308627E369D02FD13 /* Pods-NewProjectSnapkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewProjectSnapkit.debug.xcconfig"; path = "Target Support Files/Pods-NewProjectSnapkit/Pods-NewProjectSnapkit.debug.xcconfig"; sourceTree = "<group>"; };
@@ -43,7 +45,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				284E681F29D5C81A002A2E2B /* Kingfisher in Frameworks */,
 				74DE127C5450D414CD3FDEF4 /* Pods_NewProjectSnapkit.framework in Frameworks */,
+				284E681C29D5C806002A2E2B /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,10 +77,10 @@
 			children = (
 				28768F8929D31F5900731B75 /* AppDelegate.swift */,
 				28768F8B29D31F5900731B75 /* SceneDelegate.swift */,
-				28768F8D29D31F5900731B75 /* ViewController.swift */,
-				28768F9D29D49EC100731B75 /* CustomViewCell.swift */,
-				28768F9F29D4AFD000731B75 /* Model.swift */,
+				28768F9D29D49EC100731B75 /* CustomCell.swift */,
 				28768FA129D4B07F00731B75 /* ApiManager.swift */,
+				28768F8D29D31F5900731B75 /* ViewController.swift */,
+				28768F9F29D4AFD000731B75 /* NewsData.swift */,
 				28768FA329D4BBC200731B75 /* SecondViewController.swift */,
 				28768F8F29D31F5900731B75 /* Main.storyboard */,
 				28768F9229D31F5A00731B75 /* Assets.xcassets */,
@@ -121,6 +125,10 @@
 			dependencies = (
 			);
 			name = NewProjectSnapkit;
+			packageProductDependencies = (
+				284E681B29D5C806002A2E2B /* SnapKit */,
+				284E681E29D5C81A002A2E2B /* Kingfisher */,
+			);
 			productName = NewProjectSnapkit;
 			productReference = 28768F8629D31F5900731B75 /* NewProjectSnapkit.app */;
 			productType = "com.apple.product-type.application";
@@ -149,6 +157,10 @@
 				Base,
 			);
 			mainGroup = 28768F7D29D31F5900731B75;
+			packageReferences = (
+				284E681A29D5C806002A2E2B /* XCRemoteSwiftPackageReference "SnapKit" */,
+				284E681D29D5C81A002A2E2B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 28768F8729D31F5900731B75 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -218,9 +230,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28768FA029D4AFD000731B75 /* Model.swift in Sources */,
+				28768FA029D4AFD000731B75 /* NewsData.swift in Sources */,
 				28768F8E29D31F5900731B75 /* ViewController.swift in Sources */,
-				28768F9E29D49EC100731B75 /* CustomViewCell.swift in Sources */,
+				28768F9E29D49EC100731B75 /* CustomCell.swift in Sources */,
 				28768F8A29D31F5900731B75 /* AppDelegate.swift in Sources */,
 				28768FA429D4BBC200731B75 /* SecondViewController.swift in Sources */,
 				28768FA229D4B07F00731B75 /* ApiManager.swift in Sources */,
@@ -444,6 +456,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		284E681A29D5C806002A2E2B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		284E681D29D5C81A002A2E2B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		284E681B29D5C806002A2E2B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 284E681A29D5C806002A2E2B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		284E681E29D5C81A002A2E2B /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 284E681D29D5C81A002A2E2B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 28768F7E29D31F5900731B75 /* Project object */;
 }

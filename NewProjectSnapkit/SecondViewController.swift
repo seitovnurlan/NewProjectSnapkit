@@ -1,29 +1,103 @@
-//
 //  SecondViewController.swift
-//  NewProjectSnapkit
+//  NewNewsApp
 //
-//  Created by Nurlan Seitov on 30/3/23.
+//  Created by Nurlan Seitov on 27/3/23.
 //
-
 import UIKit
+import SnapKit
+import Kingfisher
 
 class SecondViewController: UIViewController {
+    
+ var item: Article? = nil
+    
+    let labelTitleName: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 14, weight: .bold)
+        label.textAlignment = .center
+        label.textColor = .black
+        return label
+    } ()
+    
+    let labelDescr: UILabel = {
+        let labeld = UILabel()
+        labeld.numberOfLines = 6
+        labeld.font = .systemFont(ofSize: 14)
+        labeld.textAlignment = .justified
+        labeld.textColor = .black
+        return labeld
+    } ()
+    
+    private lazy var authorLabl: UILabel = {
+        let authorl = UILabel()
+        authorl.font = .systemFont(ofSize: 8)
+        authorl.numberOfLines = 1
+        authorl.textAlignment = .justified
+        return authorl
+    } ()
+    
+    let imagView: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleToFill
+        image.layer.cornerRadius = 10
+        image.layer.borderWidth = 2
+        image.layer.borderColor = UIColor.gray.cgColor
+        image.clipsToBounds = true
+        return image
+        
+    } ()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        view.backgroundColor = .white
+       // title = "Extended information"
+        configData()
+        setupConstrain()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    public func configData(){
+        labelTitleName.text = item?.title
+        labelDescr.text = item?.description
+        if item?.author != nil {authorLabl.text = item?.author}
+        else {authorLabl.text = "not available"}
+        let url = URL(string: (item?.urlToImage ?? "Emty"))
+       // self.imageOfNews.kf.setImage(with: URL(string: with.urlToImage ?? "Emty"))
+        imagView.kf.setImage(with: url)
     }
-    */
+    
+    public func setupConstrain() {
+        view.addSubview(labelTitleName)
+        labelTitleName.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(140)
+            make.leading.trailing.equalToSuperview().inset(5)
+            make.height.equalTo(30)
+        }
+        
+        view.addSubview(labelDescr)
+        labelDescr.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(labelTitleName.snp.bottom).offset(20)
+            make.height.equalTo(120)
+//            make.horizontalEdges.equalToSuperview().inset(10)
+        }
+        
+        view.addSubview(authorLabl)
+        authorLabl.snp.makeConstraints { make in
+            make.top.equalTo(labelDescr.snp.bottom).offset(10)
+            make.left.equalToSuperview().offset(20)
 
+        }
+        
+        view.addSubview(imagView)
+        imagView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(authorLabl.snp.bottom).offset(30)
+            make.height.equalTo(250)
+        }
+    }
+        
 }
+

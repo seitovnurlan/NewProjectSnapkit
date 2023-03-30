@@ -17,7 +17,7 @@ class APIManager {
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data else {return}
-            
+ 
             do {
                 let newsData = try JSONDecoder().decode(NewsData.self, from: data)
                 completion(.success(newsData))

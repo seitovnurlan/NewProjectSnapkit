@@ -12,35 +12,34 @@ import Kingfisher
 
 class ViewController: UIViewController {
     
-//    private let cellID = "cell"
+//    private lazy var tableView: UITableView = {
+//        let view = UITableView()
+//        return view
+//    } ()
     
-    private lazy var tableView: UITableView = {
-        let view = UITableView()
-        return view
-    } ()
-    
+    private var tableView = UITableView()
     private var timeData: [Article] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        view.backgroundColor = .cyan
+        view.backgroundColor = .systemGray6
         
         title = "Some news"
        
-        
         tableView.dataSource = self
         tableView.delegate = self
 //        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: CustomCell.idCell)
-//        tableView.register(CustomCell.self, forCellReuseIdentifier: CustomCell.idCell)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: CustomCell.idCell)
+        tableView.register(CustomCell.self, forCellReuseIdentifier: CustomCell.idCell)
+//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: CustomCell.idCell)
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
            // make.leading.trailing.top.bottom.equalToSuperview()
             make.top.equalTo(view.snp.top).offset(65)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
             }
        
         APIManager.shared.getData { [weak self] result in
@@ -53,7 +52,7 @@ class ViewController: UIViewController {
                 }
             case .failure(let error):
                 print(error.localizedDescription)
-                print(" Ошибка!")
+                
             }
         }
     }
@@ -61,7 +60,8 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        timeData.count
+       // print(timeData.count)
+      return  timeData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -93,12 +93,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        130
+       return 130
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
         let secondVC = SecondViewController()
-//        secondVC.item = timeData[indexPath.row]
+        secondVC.item = timeData[indexPath.row]
         self.navigationController?.pushViewController(secondVC, animated: true)
 //        secondVC.name = news[indexPath.row].matter
 //        secondVC.infoName = news[indexPath.row].info
