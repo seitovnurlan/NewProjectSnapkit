@@ -24,10 +24,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        setupconstr()
+
+    }
+    private func setupconstr() {
+        
         view.backgroundColor = .systemGray6
         
         title = "Some news"
-       
         tableView.dataSource = self
         tableView.delegate = self
 //        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: CustomCell.idCell)
@@ -52,7 +56,6 @@ class ViewController: UIViewController {
                 }
             case .failure(let error):
                 print(error.localizedDescription)
-                
             }
         }
     }
@@ -60,7 +63,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       // print(timeData.count)
+       
       return  timeData.count
     }
     
@@ -72,36 +75,16 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.configure(with: value)
         
-//        cell.initUI(theme: news[indexPath.row].matter, infoTheme: news[indexPath.row].imageInfo, image: news[indexPath.row].imageInfo)
-//
-//        cell.imageCustom.layer.cornerRadius = 20
-//        cell.imageCustom.layer.borderWidth = 1
-//        cell.imageCustom.layer.borderColor = UIColor.gray.cgColor
-//        cell.imageCustom.clipsToBounds = true
-//        cell.labelCustom.textColor = .black
-//       // cell.labelCustom.font = UIFont.TextStyle.largeTitle
-//        cell.labelCustomText.textColor = .black
-//
-//        cell.labelCustom?.text = news[indexPath.row].matter
-//        cell.labelCustomText?.text = news[indexPath.row].info
-//        cell.imageCustom?.image = UIImage(named: news[indexPath.row].imageInfo)
-//        cell.layer.cornerRadius = 10
-//        cell.layer.borderWidth = 1
-//        cell.layer.borderColor = UIColor.gray.cgColor
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return 130
+       return 145
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
         let secondVC = SecondViewController()
         secondVC.item = timeData[indexPath.row]
         self.navigationController?.pushViewController(secondVC, animated: true)
-//        secondVC.name = news[indexPath.row].matter
-//        secondVC.infoName = news[indexPath.row].info
-//        secondVC.imageName = news[indexPath.row].imageInfo
     }
 }

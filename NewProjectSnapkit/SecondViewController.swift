@@ -29,12 +29,20 @@ class SecondViewController: UIViewController {
         return labeld
     } ()
     
-    private lazy var authorLabl: UILabel = {
+    let authorLabl: UILabel = {
         let authorl = UILabel()
         authorl.font = .systemFont(ofSize: 8)
         authorl.numberOfLines = 1
         authorl.textAlignment = .justified
         return authorl
+    } ()
+    
+    let publishLab: UILabel = {
+        let publ = UILabel()
+        publ.font = .systemFont(ofSize: 8)
+        publ.numberOfLines = 1
+        publ.textAlignment = .justified
+        return publ
     } ()
     
     let imagView: UIImageView = {
@@ -60,11 +68,16 @@ class SecondViewController: UIViewController {
     public func configData(){
         labelTitleName.text = item?.title
         labelDescr.text = item?.description
+        
         if item?.author != nil {authorLabl.text = item?.author}
         else {authorLabl.text = "not available"}
-        let url = URL(string: (item?.urlToImage ?? "Emty"))
-       // self.imageOfNews.kf.setImage(with: URL(string: with.urlToImage ?? "Emty"))
-        imagView.kf.setImage(with: url)
+        
+        publishLab.text = item?.publishedAt
+        
+        if item?.urlToImage != nil {
+            let url = URL(string: (item?.urlToImage ?? "Emty"))
+            imagView.kf.setImage(with: url)}
+        else {imagView.image = UIImage(named: "not data")}
     }
     
     public func setupConstrain() {
@@ -91,10 +104,16 @@ class SecondViewController: UIViewController {
 
         }
         
+        view.addSubview(publishLab)
+        publishLab.snp.makeConstraints { make in
+            make.top.equalTo(authorLabl.snp.bottom).offset(10)
+            make.left.equalToSuperview().offset(20)
+
+        }
         view.addSubview(imagView)
         imagView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
-            make.top.equalTo(authorLabl.snp.bottom).offset(30)
+            make.top.equalTo(publishLab.snp.bottom).offset(30)
             make.height.equalTo(250)
         }
     }
